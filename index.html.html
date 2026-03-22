@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>MS-700 Study Guide</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0f1117;color:#e8ecf5;font-size:15px;line-height:1.6;padding-bottom:80px}
+a{color:#4f8ef7;word-break:break-all}
+#tabnav{position:fixed;bottom:0;left:0;right:0;background:#0c0f18;border-top:1px solid #2a3045;display:flex;z-index:999;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:env(safe-area-inset-bottom)}
+.tnb{flex:none;padding:10px 14px 8px;font-size:11px;color:#7a8199;background:none;border:none;border-top:3px solid transparent;cursor:pointer;white-space:nowrap;font-family:inherit}
+.tnb.on{color:#4f8ef7;border-top-color:#4f8ef7}
+.sec{display:none;padding:16px}
+.sec.on{display:block}
+h1{font-size:1.4rem;font-weight:700;margin-bottom:6px;letter-spacing:-.02em}
+h2{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#38d9a9;margin:20px 0 10px}
+h3{font-size:.95rem;font-weight:600;margin:14px 0 6px}
+p{color:#b0b8d0;margin-bottom:8px;font-size:.9rem}
+.badge{display:inline-block;font-size:.68rem;padding:2px 8px;border-radius:4px;font-weight:700;font-family:monospace}
+.bw{background:#2d2210;color:#f7b84b}.bg{background:#0f2d25;color:#38d9a9}
+.bb{background:#1a2d52;color:#4f8ef7}.br{background:#2d1010;color:#f06060}
+.card{background:#181c27;border:1px solid #2a3045;border-radius:10px;padding:14px;margin-bottom:10px}
+.tip{background:#0f1f35;border-left:3px solid #4f8ef7;border-radius:0 8px 8px 0;padding:10px 12px;font-size:.83rem;color:#7aacdf;margin:8px 0}
+.warn{background:#1f1800;border-left:3px solid #f7b84b;border-radius:0 8px 8px 0;padding:10px 12px;font-size:.83rem;color:#f7b84b;margin:8px 0}
+.tbl{width:100%;border-collapse:collapse;font-size:.82rem;margin-bottom:12px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tbl th{text-align:left;padding:7px 9px;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:#7a8199;border-bottom:1px solid #2a3045;white-space:nowrap}
+.tbl td{padding:7px 9px;border-bottom:1px solid rgba(42,48,69,.5);color:#c0c8dc;vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.mn{font-family:monospace;font-size:.8em}
+.gc{color:#38d9a9}.gy{color:#f7b84b}.gr{color:#f06060}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.scard{background:#181c27;border:1px solid #2a3045;border-radius:8px;padding:12px}
+.scard .n{font-family:monospace;font-size:1.5rem;font-weight:700;color:#4f8ef7}
+.scard .l{font-size:.73rem;color:#7a8199;margin-top:2px}
+.day{display:grid;grid-template-columns:70px 1fr;margin-bottom:6px}
+.dlbl{background:#1e2333;border:1px solid #2a3045;border-right:none;border-radius:8px 0 0 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px}
+.dlbl .dow{font-size:.6rem;text-transform:uppercase;color:#7a8199;letter-spacing:.1em}
+.dlbl .dt{font-family:monospace;font-size:1.1rem;font-weight:700;color:#4f8ef7}
+.dcont{background:#181c27;border:1px solid #2a3045;border-radius:0 8px 8px 0;padding:10px 12px}
+.dcont .f{font-weight:600;font-size:.9rem;margin-bottom:3px}
+.dcont .t{font-size:.78rem;color:#7a8199}
+.dcont .t span{display:inline-block;background:#1e2333;border:1px solid #2a3045;border-radius:3px;padding:1px 6px;margin:2px 2px 0 0}
+.dcont .d{font-size:.78rem;color:#7a8199;margin-top:5px}
+.exday .dlbl{background:#0f2d1f;border-color:#38d9a9}
+.exday .dcont{background:#0a1f16;border-color:#38d9a9}
+.cblock{background:#181c27;border:1px solid #2a3045;border-radius:10px;padding:14px;margin-bottom:10px}
+.cblock h3{font-family:monospace;font-size:.78rem;color:#4f8ef7;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.kvg{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.kv{display:flex;justify-content:space-between;align-items:center;background:#1e2333;border-radius:5px;padding:6px 9px;font-size:.78rem}
+.kv .k{color:#7a8199}.kv .v{font-family:monospace;color:#38d9a9;font-weight:700}
+.lab{background:#181c27;border:1px solid #2a3045;border-radius:10px;padding:14px;margin-bottom:10px}
+.lab .lt{font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.lnum{font-family:monospace;font-size:.7rem;background:#1e2333;border:1px solid #2a3045;border-radius:4px;padding:2px 7px;color:#4f8ef7}
+.lsteps{list-style:none;counter-reset:s}
+.lsteps li{counter-increment:s;padding:5px 0 5px 28px;position:relative;font-size:.85rem;color:#b0b8d0;border-bottom:1px solid rgba(42,48,69,.4)}
+.lsteps li:last-child{border-bottom:none}
+.lsteps li::before{content:counter(s);position:absolute;left:0;top:5px;font-family:monospace;font-size:.68rem;background:#1e2333;border:1px solid #2a3045;width:20px;height:20px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:#4f8ef7;text-align:center;line-height:20px}
+code{font-family:monospace;font-size:.8em;background:#1e2333;border:1px solid #2a3045;border-radius:3px;padding:1px 5px;color:#38d9a9}
+.qdots{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:16px}
+.qd{width:13px;height:13px;border-radius:50%;background:#2a3045}
+.qd.cur{background:#f7b84b}.qd.ok{background:#38d9a9}.qd.bad{background:#f06060}
+.qnum{font-family:monospace;font-size:.75rem;color:#7a8199;margin-bottom:6px}
+.qtext{font-size:1rem;font-weight:600;margin-bottom:14px;line-height:1.5}
+.opt{display:flex;align-items:flex-start;gap:10px;padding:13px;background:#181c27;border:1px solid #2a3045;border-radius:8px;margin-bottom:8px;cursor:pointer;-webkit-user-select:none;user-select:none}
+.opt.sel{border-color:#4f8ef7;background:#131d34}
+.opt.ok{border-color:#38d9a9;background:#0f2420}
+.opt.bad{border-color:#f06060;background:#2a1010}
+.okey{font-family:monospace;font-size:.75rem;background:#1e2333;border:1px solid #2a3045;border-radius:4px;min-width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.otext{font-size:.88rem;color:#c8d0e8;line-height:1.4}
+.expl{background:#1e2333;border-left:3px solid #38d9a9;border-radius:0 8px 8px 0;padding:12px;margin-top:10px;font-size:.84rem;color:#a0b0cc;display:none}
+.expl.on{display:block}
+.qbtn{background:#4f8ef7;color:#fff;border:none;padding:13px 26px;border-radius:8px;font-size:.9rem;font-weight:700;cursor:pointer;margin-top:10px;margin-right:8px;font-family:inherit;-webkit-appearance:none;display:inline-block}
+.qbtn:disabled{opacity:.3;pointer-events:none}
+.qbtn.sec2{background:transparent;border:1px solid #2a3045;color:#7a8199}
+.sbig{font-family:monospace;font-size:3.5rem;font-weight:700}
+.spass{color:#38d9a9}.sfail{color:#f06060}
+</style>
+</head>
+<body>
+
+<div id="s0" class="sec on">
+<span class="badge bw" style="display:inline-block;margin-bottom:10px">EXAM: 30 March 2026</span>
+<h1>MS-700 Study Guide</h1>
+<p>You scored <b style="color:#f7b84b">640</b> last time. You need <b style="color:#38d9a9">700+</b>. That is a 60-point gap — totally fixable with focused work on your weak area.</p>
+<h2>Exam domain weights</h2>
+<div class="sgrid">
+<div class="scard"><div class="n">40-45%</div><div class="l">Configure and Manage Environment (YOUR FOCUS)</div></div>
+<div class="scard"><div class="n">20-25%</div><div class="l">Teams, Channels, Apps</div></div>
+<div class="scard"><div class="n">15-20%</div><div class="l">Meetings and Calling</div></div>
+<div class="scard"><div class="n">15-20%</div><div class="l">Monitor and Troubleshoot</div></div>
+</div>
+<h2>Priority topics</h2>
+<div class="card">
+<table class="tbl"><thead><tr><th>Sub-topic</th><th>Priority</th></tr></thead><tbody>
+<tr><td>Network bandwidth, ports, tools</td><td><span class="badge br">CRITICAL</span></td></tr>
+<tr><td>Security and compliance (DLP, retention, labels)</td><td><span class="badge br">CRITICAL</span></td></tr>
+<tr><td>Governance (lifecycle, PowerShell)</td><td><span class="badge bw">HIGH</span></td></tr>
+<tr><td>External collaboration (guest, federation, B2B)</td><td><span class="badge bw">HIGH</span></td></tr>
+<tr><td>Clients and devices</td><td><span class="badge bb">MED</span></td></tr>
+</tbody></table>
+</div>
+<h2>Key links (open in Safari)</h2>
+<div class="card">
+<p><a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ms-700">Official MS-700 Study Guide</a></p>
+<p><a href="https://learn.microsoft.com/en-us/credentials/certifications/exams/ms-700/practice/assessment?assessment-type=practice&assessmentId=55">Free Official Practice Assessment</a></p>
+<p><a href="https://admin.teams.microsoft.com">Teams Admin Center (E5 tenant)</a></p>
+</div>
+<div class="warn">You have an E5 trial. Go to Labs tab and do every exercise hands-on in your tenant.</div>
+</div>
+
+<div id="s1" class="sec">
+<h1>8-Day Study Plan</h1>
+<p>2-3 hours per day. Exam is 30 March.</p>
+<div style="margin-top:14px">
+<div class="day"><div class="dlbl"><div class="dow">Sun</div><div class="dt">22</div></div><div class="dcont"><div class="f">Network Deep Dive</div><div class="t"><span>Bandwidth tables</span><span>kbps/Mbps</span><span>Ports</span><span>Network Planner</span></div><div class="d">Study Network tab. Lab: Open Network Planner in TAC, model 50 users.</div></div></div>
+<div class="day"><div class="dlbl"><div class="dow">Mon</div><div class="dt">23</div></div><div class="dcont"><div class="f">Security and Compliance</div><div class="t"><span>DLP</span><span>Retention</span><span>Sensitivity labels</span><span>Info Barriers</span></div><div class="d">Lab: Create DLP policy in Purview. Set retention policy for Teams. Quiz Qs 1-15.</div></div></div>
+<div class="day"><div class="dlbl"><div class="dow">Tue</div><div class="dt">24</div></div><div class="dcont"><div class="f">Governance and Lifecycle</div><div class="t"><span>Expiry policies</span><span>Naming</span><span>PowerShell</span><span>Packages</span></div><div class="d">Lab: Set group expiry, naming policy with blocked words. Run 3 PS commands. Quiz Qs 16-25.</div></div></div>
+<div class="day"><div class="dlbl"><div class="dow">Wed</div><div class="dt">25</div></div><div class="dcont"><div class="f">External Collaboration</div><div class="t"><span>Guest access</span><span>External access</span><span>Shared channels</span><span>B2B</span></div><div class="d">Lab: Enable guest access all 3 portals, configure per-domain external access. Quiz Qs 26-35.</div></div></div>
+<div class="day"><div class="dlbl"><div class="dow">Thu</div><div class="dt">26</div></div><div class="dcont"><div class="f">Meetings and Calling</div><div class="t"><span>Meeting policies</span><span>Webinar</span><span>Town Hall</span><span>Teams Phone</span></div><div class="d">Lab: Create meeting policy, set up a webinar end-to-end. Quiz Qs 36-45.</div></div></div>
+<div class="day"><div class="dlbl"><div class="dow">Fri</div><div class="dt">27</div></div><div class="dcont"><div class="f">Monitor and Troubleshoot</div><div class="t"><span>CQD</span><span>Call Analytics</span><span>Usage reports</span><span>Alerts</span></div><div class="d">Lab: View CQD, export usage report, clear client cache. Retake full quiz.</div></div></div>
+<div class="day"><div class="dlbl"><div class="dow">Sat</div><div class="dt">28</div></div><div class="dcont"><div class="f">Full Mock Exam Day</div><div class="t"><span>Official practice assessment</span><span>Review wrong answers</span></div><div class="d">Take official free assessment at learn.microsoft.com. Note every wrong answer. Back to docs.</div></div></div>
+<div class="day"><div class="dlbl"><div class="dow">Sun</div><div class="dt">29</div></div><div class="dcont"><div class="f">Light Review Only</div><div class="t"><span>Cheat sheet only</span><span>Network numbers</span><span>Early night</span></div><div class="d">Review Cheat Sheet tab only. No new material. Confirm exam time. Rest well.</div></div></div>
+<div class="day exday"><div class="dlbl"><div class="dow">Mon</div><div class="dt">30</div></div><div class="dcont"><div class="f">EXAM DAY</div><div class="t"><span>Read every question twice</span><span>Flag and skip hard ones first</span></div><div class="d">100 minutes, 40-60 questions. Aim 700+. You have done the work. Trust your prep.</div></div></div>
+</div>
+<h2>Daily rhythm</h2>
+<div class="card">
+<p><b style="color:#e8ecf5">Session 1 (45 min)</b> Read theory: Microsoft Learn + this guide</p>
+<p><b style="color:#e8ecf5">Session 2 (45 min)</b> Hands-on lab in your E5 tenant</p>
+<p><b style="color:#e8ecf5">Session 3 (30 min)</b> Quiz questions on today's topic</p>
+<p><b style="color:#e8ecf5">Before bed (15 min)</b> Skim cheat sheet for today's section</p>
+</div>
+</div>
+
+<div id="s2" class="sec">
+<h1>Network Settings</h1>
+<p>Expect 3-6 exam questions with specific kbps/Mbps numbers. Memorise the table.</p>
+<h2>Bandwidth per user</h2>
+<div class="card">
+<table class="tbl"><thead><tr><th>Scenario</th><th>Minimum</th><th>Recommended</th></tr></thead><tbody>
+<tr><td>P2P Audio</td><td class="gc mn">30 kbps</td><td class="gc mn">100 kbps</td></tr>
+<tr><td>P2P Audio + Screen</td><td class="gy mn">130 kbps</td><td class="gy mn">200 kbps</td></tr>
+<tr><td>P2P Video 360p</td><td class="gy mn">500 kbps</td><td class="gy mn">1.2 Mbps</td></tr>
+<tr><td>P2P HD Video 720p</td><td class="gy mn">1.5 Mbps</td><td class="gy mn">1.5 Mbps</td></tr>
+<tr><td>P2P HD Video 1080p</td><td class="gr mn">4 Mbps</td><td class="gr mn">4 Mbps</td></tr>
+<tr><td>Meeting Audio</td><td class="gc mn">10 kbps</td><td class="gc mn">50 kbps</td></tr>
+<tr><td>Meeting Video</td><td class="gy mn">150 kbps</td><td class="gr mn">4 Mbps</td></tr>
+<tr><td>Meeting Screen Share</td><td class="gy mn">250 kbps</td><td class="gr mn">4 Mbps</td></tr>
+<tr><td>Town Hall viewer</td><td class="gy mn">1.5 Mbps</td><td class="gr mn">3 Mbps (1080p)</td></tr>
+</tbody></table>
+<div class="tip">Teams always prioritises audio over video when bandwidth is limited. Degrades gracefully: reduces resolution first, then drops video entirely.</div>
+</div>
+<h2>Quality thresholds</h2>
+<div class="sgrid">
+<div class="scard"><div class="n">&lt;100ms</div><div class="l">Latency (round-trip)</div></div>
+<div class="scard"><div class="n">&lt;30ms</div><div class="l">Jitter (variation)</div></div>
+</div>
+<div class="sgrid">
+<div class="scard"><div class="n">&lt;1%</div><div class="l">Packet loss</div></div>
+<div class="scard"><div class="n">3478-3481</div><div class="l">UDP media ports</div></div>
+</div>
+<h2>The classic 150 kbps exam question</h2>
+<div class="card">
+<p><i>Bandwidth restricted to 150 kbps up/down. Which TWO features work?</i></p>
+<table class="tbl"><thead><tr><th>Feature</th><th>Min needed</th><th>Works?</th></tr></thead><tbody>
+<tr><td>Audio in meetings</td><td class="mn">10 kbps</td><td>YES</td></tr>
+<tr><td>One-to-one video</td><td class="mn">150 kbps</td><td>YES</td></tr>
+<tr><td>P2P screen share</td><td class="mn">200 kbps</td><td>NO</td></tr>
+<tr><td>Video in meetings</td><td class="mn">150 up / 200 down</td><td>NO (download fails)</td></tr>
+<tr><td>Screen share in meetings</td><td class="mn">250 kbps</td><td>NO</td></tr>
+</tbody></table>
+<p style="color:#38d9a9;font-weight:700">Answer: Audio in meetings + one-to-one video</p>
+</div>
+<h2>Ports and protocols</h2>
+<div class="card">
+<table class="tbl"><thead><tr><th>Service</th><th>Protocol</th><th>Port(s)</th></tr></thead><tbody>
+<tr><td>Signalling</td><td>TCP</td><td class="mn">80, 443</td></tr>
+<tr><td>Media (preferred)</td><td>UDP</td><td class="mn">3478-3481</td></tr>
+<tr><td>Media (fallback)</td><td>TCP</td><td class="mn">443</td></tr>
+<tr><td>STUN/TURN</td><td>UDP</td><td class="mn">3478</td></tr>
+</tbody></table>
+</div>
+<h2>Network tools</h2>
+<div class="card">
+<table class="tbl"><thead><tr><th>Tool</th><th>Purpose</th><th>Where</th></tr></thead><tbody>
+<tr><td>Network Planner</td><td>Model bandwidth before deployment</td><td>TAC - Planning</td></tr>
+<tr><td>Teams Network Assessment Tool</td><td>Test actual latency/jitter/packet loss from a machine</td><td>Download from Microsoft</td></tr>
+<tr><td>M365 Connectivity Test</td><td>Browser-based connectivity check</td><td>connectivity.office.com</td></tr>
+<tr><td>CQD</td><td>Org-wide call quality analytics</td><td>TAC - Analytics</td></tr>
+<tr><td>Call Analytics</td><td>Per-user call investigation</td><td>TAC - Users</td></tr>
+</tbody></table>
+</div>
+<h2>QoS DSCP values</h2>
+<div class="card">
+<table class="tbl"><thead><tr><th>Modality</th><th>DSCP</th><th>Port range</th></tr></thead><tbody>
+<tr><td>Audio</td><td class="mn gc">46 (EF) - Highest</td><td class="mn">50000-50019</td></tr>
+<tr><td>Video</td><td class="mn gy">34 (AF41)</td><td class="mn">50020-50039</td></tr>
+<tr><td>Screen share</td><td class="mn">18 (AF21)</td><td class="mn">50040-50059</td></tr>
+</tbody></table>
+</div>
+</div>
+
+<div id="s3" class="sec">
+<h1>Environment Content</h1>
+<h2>Admin roles</h2>
+<div class="card">
+<table class="tbl"><thead><tr><th>Role</th><th>Can do</th><th>Cannot do</th></tr></thead><tbody>
+<tr><td>Teams Administrator</td><td>All Teams features, policies, settings</td><td>Manage users in Entra ID</td></tr>
+<tr><td>Teams Communications Admin</td><td>Calling, phone numbers, meetings</td><td>Manage teams/channels</td></tr>
+<tr><td>Teams Comms Support Engineer</td><td>View call analytics ALL users, CQD</td><td>Change settings</td></tr>
+<tr><td>Teams Comms Support Specialist</td><td>View call analytics SPECIFIC users only</td><td>Full CQD access</td></tr>
+<tr><td>Teams Device Admin</td><td>Manage certified devices</td><td>Manage policies</td></tr>
+</tbody></table>
+</div>
+<h2>DLP policies</h2>
+<div class="card">
+<p>Prevent sensitive data from being shared in Teams. Configured in Microsoft Purview.</p>
+<ul style="font-size:.88rem;color:#b0b8d0;padding-left:1.1rem;line-height:2">
+<li>Applies to Teams chat AND channel messages</li>
+<li>Can block messages, show policy tips, notify admins</li>
+<li>Requires M365 E3/E5 or compliance add-on</li>
+<li>Also applies to guests in scope</li>
+</ul>
+</div>
+<h2>Retention policies</h2>
+<div class="card">
+<table class="tbl"><thead><tr><th>Location</th><th>Stored in</th></tr></thead><tbody>
+<tr><td>Teams channel messages</td><td>Hidden Exchange mailbox + SharePoint</td></tr>
+<tr><td>Teams private chats</td><td>User Exchange mailbox hidden folder</td></tr>
+<tr><td>Meeting recordings</td><td>OneDrive (non-channel) or SharePoint (channel)</td></tr>
+</tbody></table>
+<div class="tip">Teams retention is configured SEPARATELY from Exchange. You must explicitly target Teams channel messages or Teams chats as locations in Purview.</div>
+</div>
+<h2>Sensitivity labels</h2>
+<div class="card">
+<ul style="font-size:.88rem;color:#b0b8d0;padding-left:1.1rem;line-height:2">
+<li>Applied to Teams, M365 Groups, SharePoint sites</li>
+<li>Controls privacy (Public/Private), guest access, device access, meeting policies</li>
+<li>Must be published via a label PUBLISHING POLICY - creating the label alone is not enough</li>
+<li>Requires Entra ID P1</li>
+</ul>
+</div>
+<h2>Information Barriers</h2>
+<div class="card">
+<p>Prevents specific groups from communicating (e.g. traders vs analysts). Configured in Microsoft Purview.</p>
+<ul style="font-size:.88rem;color:#b0b8d0;padding-left:1.1rem;line-height:2">
+<li>Requires Microsoft 365 E5 or E5 Compliance</li>
+<li>Uses Entra ID attributes like Department to define segments</li>
+<li>IB modes: Open, Owner Moderated, Implicit, Explicit</li>
+<li>When applied: blocked users automatically removed from teams</li>
+</ul>
+</div>
+<h2>External collaboration</h2>
+<div class="card">
+<table class="tbl"><thead><tr><th>Type</th><th>What it is</th><th>Configured in</th></tr></thead><tbody>
+<tr><td>External access</td><td>1:1 chat and calls with other orgs. No access to your teams or channels.</td><td>TAC only</td></tr>
+<tr><td>Guest access</td><td>External user added to a team. Can access channels, files, meetings.</td><td>TAC + M365 Admin + Entra ID (ALL 3)</td></tr>
+<tr><td>Shared channels</td><td>External user joins a channel via B2B direct connect</td><td>TAC + Entra ID B2B direct connect</td></tr>
+<tr><td>MTO</td><td>Multiple tenants in same company</td><td>Entra ID cross-tenant sync</td></tr>
+</tbody></table>
+<div class="warn">Guest access requires ALL 3 enabled: (1) Entra ID External Identities, (2) M365 Admin Center group settings, (3) TAC guest access. Any one off = guests cannot join.</div>
+</div>
+<h2>Governance</h2>
+<div class="card">
+<h3>Group Expiry Policy</h3>
+<ul style="font-size:.88rem;color:#b0b8d0;padding-left:1.1rem;line-height:2">
+<li>Expires groups after X days of inactivity</li>
+<li>Owners get emails at 30, 15, 1 day before expiry</li>
+<li>Not renewed = soft-deleted 30 days then permanently deleted</li>
+<li>Requires Entra ID P1. Configure at Entra ID - Groups - Expiration</li>
+</ul>
+<h3>Naming Policy</h3>
+<ul style="font-size:.88rem;color:#b0b8d0;padding-left:1.1rem;line-height:2">
+<li>Enforce prefix/suffix (e.g. GRP_ prefix)</li>
+<li>Block specific words</li>
+<li>Requires Entra ID P1. Global admins are EXEMPT.</li>
+<li>Configure at Entra ID - Groups - Naming policy</li>
+</ul>
+</div>
+<h2>PowerShell commands</h2>
+<div class="card">
+<table class="tbl"><thead><tr><th>Command</th><th>Action</th></tr></thead><tbody>
+<tr><td><code>Connect-MicrosoftTeams</code></td><td>Connect to Teams PS</td></tr>
+<tr><td><code>Get-Team</code></td><td>List all teams</td></tr>
+<tr><td><code>New-Team</code></td><td>Create a team</td></tr>
+<tr><td><code>Add-TeamUser</code></td><td>Add user (-Role Owner/Member)</td></tr>
+<tr><td><code>Remove-TeamUser</code></td><td>Remove user from team</td></tr>
+<tr><td><code>Set-TeamArchivedState</code></td><td>Archive or unarchive a team</td></tr>
+<tr><td><code>Grant-CsTeamsMeetingPolicy</code></td><td>Assign meeting policy to user</td></tr>
+<tr><td><code>New-CsTeamsMessagingPolicy</code></td><td>Create messaging policy</td></tr>
+<tr><td><code>Set-CsTenantFederationConfiguration</code></td><td>Configure external access</td></tr>
+</tbody></table>
+<div class="tip">Pattern: Get- (view), New- (create), Set- (modify), Grant- (assign to user). Grant-Cs is always how you assign policies to users.</div>
+</div>
+<h2>Meetings and Calling</h2>
+<div class="card">
+<table class="tbl"><thead><tr><th>Event type</th><th>Max attendees</th><th>Interaction</th></tr></thead><tbody>
+<tr><td>Teams Meeting</td><td>1,000 interactive / 10,000 view-only</td><td>Full (video, audio, chat)</td></tr>
+<tr><td>Webinar</td><td>1,000</td><td>Registration, presenter-led</td></tr>
+<tr><td>Town Hall</td><td>20,000</td><td>Broadcast + Q and A only</td></tr>
+<tr><td>Virtual Appointment</td><td>Small group</td><td>No Teams app needed for customer</td></tr>
+</tbody></table>
+<div class="tip">Organiser meeting policy governs what is allowed in the meeting - not the attendee policy. This is a common exam trap.</div>
+</div>
+<div class="card">
+<h3>Teams Phone options</h3>
+<table class="tbl"><thead><tr><th>Model</th><th>Who manages SBC</th></tr></thead><tbody>
+<tr><td>Calling Plan</td><td>Microsoft (fully managed)</td></tr>
+<tr><td>Operator Connect</td><td>Certified carrier manages SBC</td></tr>
+<tr><td>Direct Routing</td><td>You manage your own SBC</td></tr>
+</tbody></table>
+<p style="font-size:.83rem;color:#b0b8d0">Auto-attendants and call queues require a resource account with a Virtual User license (free).</p>
+</div>
+<h2>Monitor and Troubleshoot</h2>
+<div class="card">
+<table class="tbl"><thead><tr><th>Task</th><th>Tool</th></tr></thead><tbody>
+<tr><td>Investigate one user poor call quality</td><td>Call Analytics (TAC - Users)</td></tr>
+<tr><td>Org-wide call quality trends</td><td>CQD (TAC - Analytics)</td></tr>
+<tr><td>Teams sign-in issues</td><td>M365 Admin - Support - Run diagnostics</td></tr>
+<tr><td>Client showing stale data</td><td>Clear Teams client cache</td></tr>
+<tr><td>Alert when team is created</td><td>Alert rules in TAC - Notifications</td></tr>
+<tr><td>Collect client logs</td><td>Ctrl+Alt+Shift+1 in Teams desktop</td></tr>
+</tbody></table>
+</div>
+</div>
+
+<div id="s4" class="sec">
+<h1>Hands-on Labs</h1>
+<p>Use your E5 trial tenant. Each lab takes 10-20 minutes.</p>
+<div class="lab"><div class="lt"><span class="lnum">LAB 01</span> Network Planner</div><ol class="lsteps">
+<li>TAC - Planning - Network planner - Add plan</li>
+<li>Add a network site, set subnet and WAN link speed (e.g. 100 Mbps)</li>
+<li>Add 50 users with Office worker persona</li>
+<li>Run the report and note bandwidth usage percentage</li>
+<li>Reduce link speed to 10 Mbps and observe the insufficiency warning</li>
+</ol></div>
+<div class="lab"><div class="lt"><span class="lnum">LAB 02</span> Guest Access (all 3 layers)</div><ol class="lsteps">
+<li>Entra ID - External Identities - External collaboration settings - Allow guests</li>
+<li>M365 Admin Center - Settings - Org settings - M365 Groups - Allow guests</li>
+<li>TAC - Users - Guest access - Turn On</li>
+<li>Create a team, go to Members, add member using external email</li>
+<li>Test the guest experience from a personal email</li>
+</ol></div>
+<div class="lab"><div class="lt"><span class="lnum">LAB 03</span> Create and Assign a Meeting Policy</div><ol class="lsteps">
+<li>TAC - Meetings - Meeting policies - Add</li>
+<li>Name it No External Recording</li>
+<li>Disable: Allow recording for attendees, Allow transcription</li>
+<li>Enable: Allow IP video, Screen sharing Entire screen</li>
+<li>Save and assign to your own account</li>
+<li>Schedule a test meeting and verify the policy applied</li>
+</ol></div>
+<div class="lab"><div class="lt"><span class="lnum">LAB 04</span> Group Expiration Policy</div><ol class="lsteps">
+<li>Entra ID - Groups - Expiration</li>
+<li>Set group lifetime to 180 days</li>
+<li>Set admin email for groups with no owner</li>
+<li>Select All groups and save</li>
+<li>Note the Entra ID P1 licensing requirement warning</li>
+</ol></div>
+<div class="lab"><div class="lt"><span class="lnum">LAB 05</span> Group Naming Policy</div><ol class="lsteps">
+<li>Entra ID - Groups - Naming policy</li>
+<li>Add prefix: GRP_</li>
+<li>Add a blocked word: Confidential</li>
+<li>Save and then create a new Team to see enforcement</li>
+</ol></div>
+<div class="lab"><div class="lt"><span class="lnum">LAB 06</span> DLP Policy for Teams</div><ol class="lsteps">
+<li>Go to compliance.microsoft.com (Microsoft Purview)</li>
+<li>Data loss prevention - Policies - Create policy</li>
+<li>Template: Financial - Credit Card Number</li>
+<li>Add location: Teams chat and channel messages</li>
+<li>Action: Block message and show policy tip</li>
+<li>Test by sending a fake credit card number in Teams chat</li>
+</ol></div>
+<div class="lab"><div class="lt"><span class="lnum">LAB 07</span> PowerShell Teams Management</div><ol class="lsteps">
+<li>Run: <code>Install-Module MicrosoftTeams</code></li>
+<li>Connect: <code>Connect-MicrosoftTeams</code></li>
+<li>List teams: <code>Get-Team</code></li>
+<li>Create team: <code>New-Team -DisplayName "Lab Team" -Visibility Private</code></li>
+<li>Add yourself: <code>Add-TeamUser -GroupId [id] -User youremail -Role Owner</code></li>
+<li>Archive: <code>Set-TeamArchivedState -GroupId [id] -Archived $true</code></li>
+</ol></div>
+<div class="lab"><div class="lt"><span class="lnum">LAB 08</span> External Access by Domain</div><ol class="lsteps">
+<li>TAC - Users - External access</li>
+<li>Switch from Allow all to Allow specific domains</li>
+<li>Add an allowed domain (e.g. microsoft.com)</li>
+<li>Add a blocked domain (e.g. competitor.com)</li>
+<li>Note: this is federation for 1:1 chat, not guest access</li>
+</ol></div>
+<div class="lab"><div class="lt"><span class="lnum">LAB 09</span> CQD and Call Analytics</div><ol class="lsteps">
+<li>TAC - Analytics and reports - Call quality dashboard</li>
+<li>Explore Summary Reports and note audio/video stream quality</li>
+<li>TAC - Users - select a user - Call history</li>
+<li>Click a call and review jitter, packet loss, latency details</li>
+<li>Remember: CQD = org-wide, Call Analytics = per-user</li>
+</ol></div>
+<div class="lab"><div class="lt"><span class="lnum">LAB 10</span> Fun: Set Up a Webinar</div><ol class="lsteps">
+<li>Teams client - Calendar - New meeting - Webinar</li>
+<li>Add title, date, add yourself as co-presenter</li>
+<li>Enable registration form with a custom question</li>
+<li>Disable Allow attendees to unmute</li>
+<li>Publish and copy the registration link</li>
+<li>Open in private browsing, register, and join from both sides</li>
+</ol></div>
+</div>
+
+<div id="s5" class="sec">
+<div id="qc"><p style="color:#7a8199;padding:20px 0">Loading quiz...</p></div>
+</div>
+
+<div id="s6" class="sec">
+<h1>Cheat Sheet</h1>
+<p>Review the night before and morning of the exam.</p>
+<div class="cblock"><h3>Bandwidth - memorise these</h3><div class="kvg">
+<div class="kv"><span class="k">P2P Audio</span><span class="v">30 kbps</span></div>
+<div class="kv"><span class="k">Audio + Screen</span><span class="v">130 kbps</span></div>
+<div class="kv"><span class="k">P2P Video 360p</span><span class="v">500 kbps</span></div>
+<div class="kv"><span class="k">P2P HD 720p</span><span class="v">1.5 Mbps</span></div>
+<div class="kv"><span class="k">Meeting Audio</span><span class="v">10 kbps</span></div>
+<div class="kv"><span class="k">Meeting Video min</span><span class="v">150 kbps</span></div>
+<div class="kv"><span class="k">Meeting Screen min</span><span class="v">250 kbps</span></div>
+<div class="kv"><span class="k">Town Hall viewer</span><span class="v">1.5-2 Mbps</span></div>
+</div></div>
+<div class="cblock"><h3>Quality thresholds</h3><div class="kvg">
+<div class="kv"><span class="k">Latency max</span><span class="v">&lt;100ms</span></div>
+<div class="kv"><span class="k">Jitter max</span><span class="v">&lt;30ms</span></div>
+<div class="kv"><span class="k">Packet loss max</span><span class="v">&lt;1%</span></div>
+<div class="kv"><span class="k">Media ports UDP</span><span class="v">3478-3481</span></div>
+</div></div>
+<div class="cblock"><h3>License requirements</h3><div class="kvg">
+<div class="kv"><span class="k">Expiry/Naming</span><span class="v">Entra ID P1</span></div>
+<div class="kv"><span class="k">Access Reviews</span><span class="v">Entra ID P2</span></div>
+<div class="kv"><span class="k">Info Barriers</span><span class="v">M365 E5</span></div>
+<div class="kv"><span class="k">Comm. Compliance</span><span class="v">M365 E5</span></div>
+<div class="kv"><span class="k">Sensitivity Labels</span><span class="v">Entra ID P1</span></div>
+<div class="kv"><span class="k">Virtual User license</span><span class="v">Free</span></div>
+</div></div>
+<div class="cblock"><h3>Guest access - 3 places required</h3><div class="kvg">
+<div class="kv"><span class="k">1. Entra ID</span><span class="v">External Identities</span></div>
+<div class="kv"><span class="k">2. M365 Admin</span><span class="v">Org Settings - Groups</span></div>
+<div class="kv"><span class="k">3. Teams Admin</span><span class="v">Users - Guest Access</span></div>
+<div class="kv"><span class="k">External access</span><span class="v">TAC only (1 place)</span></div>
+</div></div>
+<div class="cblock"><h3>Tools - where they live</h3><div class="kvg">
+<div class="kv"><span class="k">Network Planner</span><span class="v">TAC - Planning</span></div>
+<div class="kv"><span class="k">CQD</span><span class="v">TAC - Analytics</span></div>
+<div class="kv"><span class="k">Call Analytics</span><span class="v">TAC - Users</span></div>
+<div class="kv"><span class="k">Retention/DLP</span><span class="v">Purview</span></div>
+<div class="kv"><span class="k">Info Barriers</span><span class="v">Purview</span></div>
+<div class="kv"><span class="k">Naming/Expiry</span><span class="v">Entra ID - Groups</span></div>
+<div class="kv"><span class="k">Cond. Access</span><span class="v">Entra ID - Security</span></div>
+<div class="kv"><span class="k">Sensitivity Labels</span><span class="v">Purview - Info Protection</span></div>
+</div></div>
+<div class="cblock"><h3>Event types</h3><div class="kvg">
+<div class="kv"><span class="k">Teams Meeting</span><span class="v">1,000 interactive</span></div>
+<div class="kv"><span class="k">Webinar</span><span class="v">1,000 registered</span></div>
+<div class="kv"><span class="k">Town Hall</span><span class="v">20,000 broadcast</span></div>
+<div class="kv"><span class="k">Town Hall eCDN</span><span class="v">&gt;20,000</span></div>
+</div></div>
+<div class="cblock"><h3>Policy precedence (highest to lowest)</h3><div class="kvg">
+<div class="kv"><span class="k">1st</span><span class="v">Direct user assignment</span></div>
+<div class="kv"><span class="k">2nd</span><span class="v">Group assignment rank 1</span></div>
+<div class="kv"><span class="k">3rd</span><span class="v">Org-wide default</span></div>
+</div></div>
+<div class="cblock"><h3>QoS DSCP values</h3><div class="kvg">
+<div class="kv"><span class="k">Audio</span><span class="v">DSCP 46</span></div>
+<div class="kv"><span class="k">Video</span><span class="v">DSCP 34</span></div>
+<div class="kv"><span class="k">Screen share</span><span class="v">DSCP 18</span></div>
+</div></div>
+</div>
+
+<div id="tabnav">
+<button class="tnb on" data-tab="0">Overview</button>
+<button class="tnb" data-tab="1">Plan</button>
+<button class="tnb" data-tab="2">Network</button>
+<button class="tnb" data-tab="3">Content</button>
+<button class="tnb" data-tab="4">Labs</button>
+<button class="tnb" data-tab="5">Quiz</button>
+<button class="tnb" data-tab="6">Cheat</button>
+</div>
+
+<script>
+(function() {
+  var secs = document.querySelectorAll('.sec');
+  var btns = document.querySelectorAll('.tnb');
+  var qInited = false;
+
+  function showTab(i) {
+    for (var x = 0; x < secs.length; x++) {
+      secs[x].classList.remove('on');
+      btns[x].classList.remove('on');
+    }
+    secs[i].classList.add('on');
+    btns[i].classList.add('on');
+    window.scrollTo(0, 0);
+    if (i === 5 && !qInited) { qInited = true; initQuiz(); }
+  }
+
+  for (var i = 0; i < btns.length; i++) {
+    (function(idx) {
+      btns[idx].addEventListener('click', function() { showTab(idx); });
+    })(i);
+  }
+
+  // ===== QUIZ =====
+  var qs = [
+    {q:"What is the minimum bandwidth for peer-to-peer audio calling in Teams?",o:["10 kbps","30 kbps","100 kbps","500 kbps"],a:1,e:"30 kbps is the minimum for P2P audio. Audio in a group meeting only needs 10 kbps. Do not confuse the two."},
+    {q:"Bandwidth is restricted to 150 kbps up and down. Which TWO features work? Select 2.",o:["P2P screen sharing","P2P one-to-one video","Screen sharing in meetings","Audio in meetings"],a:[1,3],m:true,e:"P2P video needs exactly 150 kbps (meets minimum). Audio in meetings needs only 10 kbps. Screen sharing needs 200 kbps and meeting screen share needs 250 kbps."},
+    {q:"Which tool in Teams Admin Center helps you model bandwidth requirements BEFORE deployment?",o:["Call Quality Dashboard","Network Assessment Tool","Network Planner","Connectivity Test Tool"],a:2,e:"Network Planner in TAC - Planning uses Personas and Plans to model bandwidth needs pre-deployment. CQD is for post-deployment monitoring."},
+    {q:"What is the recommended maximum round-trip latency for Teams calls?",o:["50ms","100ms","200ms","500ms"],a:1,e:"Microsoft recommends round-trip latency under 100ms. Jitter should be under 30ms and packet loss under 1%."},
+    {q:"What DSCP value is used for Teams audio traffic in QoS?",o:["18","34","46","56"],a:2,e:"Audio uses DSCP 46 (Expedited Forwarding) which is the highest QoS priority. Video uses 34, Screen sharing uses 18."},
+    {q:"A Town Hall is being streamed to 500 employees. What is the approximate bandwidth per viewer?",o:["500 kbps","1 Mbps","1.5 to 2 Mbps","10 Mbps"],a:2,e:"Town Hall viewers need approximately 1.5 Mbps minimum, 2 Mbps recommended. For 1080p, plan for 3 Mbps per viewer."},
+    {q:"Which UDP ports should be opened outbound for Teams media traffic?",o:["80 and 443","1024 to 65535","3478 to 3481","50000 to 50059"],a:2,e:"Teams media uses UDP 3478 to 3481 outbound. TCP 443 is the fallback. Ports 80 and 443 are for signalling."},
+    {q:"An admin wants to TEST actual network quality from a client machine. Which tool?",o:["Network Planner","Teams Network Assessment Tool","Call Quality Dashboard","M365 Connectivity Test"],a:1,e:"The Teams Network Assessment Tool is installed on a client machine and runs real tests measuring latency, jitter, and packet loss to Microsoft network edge."},
+    {q:"What is the recommended maximum jitter for Teams calls?",o:["10ms","30ms","100ms","150ms"],a:1,e:"Microsoft recommends jitter under 30ms. The three key metrics are latency under 100ms, jitter under 30ms, packet loss under 1%."},
+    {q:"Teams tries to use which protocol first for media traffic?",o:["TCP","HTTP","UDP","TLS"],a:2,e:"Teams always tries UDP first for media due to lower latency. If UDP 3478-3481 is blocked it falls back to TCP 443. Always open UDP 3478-3481 outbound."},
+    {q:"An org wants to prevent credit card numbers being shared in Teams chat. What to configure?",o:["Sensitivity labels","Information Barriers","DLP policy","Conditional Access policy"],a:2,e:"DLP policies in Microsoft Purview can detect and block sensitive information like credit card numbers in Teams chat and channel messages."},
+    {q:"Where are Teams channel messages stored for retention purposes?",o:["SharePoint Online only","Exchange Online only","Hidden Exchange mailbox AND SharePoint","OneDrive only"],a:2,e:"Teams channel messages are stored in a hidden Exchange mailbox AND SharePoint. Retention policies must cover both. Private chats go to the user Exchange mailbox hidden folder."},
+    {q:"Which role can view Call Analytics for ALL users but CANNOT change settings?",o:["Teams Administrator","Teams Device Admin","Teams Comms Support Engineer","Teams Comms Support Specialist"],a:2,e:"Teams Communications Support Engineer can view all users call analytics and CQD. The Specialist role can only view specific users analytics."},
+    {q:"What prevents the Trading department from communicating with the Research department?",o:["DLP policies","Sensitivity labels","Information Barriers","Conditional Access"],a:2,e:"Information Barriers prevent specific groups from communicating, exactly for regulatory requirements like separating traders from analysts."},
+    {q:"What license is required to apply sensitivity labels to Teams and M365 Groups?",o:["M365 F1","Entra ID Free","Entra ID P1","M365 E5 only"],a:2,e:"Sensitivity labels for M365 Groups and Teams require Entra ID P1 at minimum plus an appropriate Microsoft 365 license."},
+    {q:"Users cannot see a sensitivity label when creating a team. Most likely reason?",o:["Labels not enabled for Teams","Label not published via a publishing policy","User needs global admin role","Labels only work on SharePoint"],a:1,e:"Labels must be published via a label publishing policy in Microsoft Purview targeting the users or groups who should see them. Creating the label alone is not enough."},
+    {q:"Where are Conditional Access policies for Teams configured?",o:["Teams Admin Center","M365 Admin Center","Microsoft Entra ID","Microsoft Purview"],a:2,e:"Conditional Access is configured in Microsoft Entra ID under Security - Conditional Access. Teams also inherits CA policies applied to Exchange Online and SharePoint Online."},
+    {q:"What license is required for Information Barriers?",o:["M365 E3","Entra ID P1","M365 E5 or E5 Compliance add-on","M365 F3"],a:2,e:"Microsoft 365 E5 or the E5 Compliance add-on is required for Information Barriers. It is a premium compliance feature."},
+    {q:"A DLP policy in Teams applies to which users?",o:["Internal users only","Licensed E5 users only","Internal users AND guests in scope","Teams admins only"],a:2,e:"DLP policies apply to internal users AND guests within the policy scope."},
+    {q:"Where is a retention policy for Teams configured?",o:["TAC - Messaging policies","Microsoft Purview - Data lifecycle - Retention policies","Entra ID - Compliance","Exchange admin center"],a:1,e:"Retention for Teams is in Microsoft Purview - Data lifecycle management - Retention policies. You must explicitly target Teams channel messages or Teams chats as locations."},
+    {q:"A Microsoft 365 group expires and the owner does not renew. What happens?",o:["Permanently deleted immediately","Soft-deleted for 30 days then permanently deleted","Archived automatically","Locked but not deleted"],a:1,e:"After expiry the group is soft-deleted for 30 days during which it can be restored. After 30 days it is permanently deleted. Owners get notifications at 30, 15, and 1 day before."},
+    {q:"Where is the group naming policy configured?",o:["Teams Admin Center","Entra ID - Groups - Naming policy","Microsoft Purview","M365 Admin Center"],a:1,e:"Group naming policies with prefix, suffix, and blocked words are in Entra ID - Groups - Naming policy. Requires Entra ID P1."},
+    {q:"A user has a direct policy assignment AND inherits a policy from a group. Which applies?",o:["Group policy","Direct assignment","Org-wide default","Whichever was assigned first"],a:1,e:"Direct assignment always wins over group-based assignment which wins over org-wide defaults."},
+    {q:"What license is required for Access Reviews?",o:["M365 E3","Entra ID P1","Entra ID P2","M365 F1"],a:2,e:"Access Reviews require Entra ID P2 for periodic verification of user and guest membership in groups and teams."},
+    {q:"Global admins are exempt from which governance feature?",o:["Conditional Access policies","Information Barriers","Group naming policies","Retention policies"],a:2,e:"Global Admins are exempt from group naming policies. They can create groups with any name regardless of configured rules."},
+    {q:"Which PowerShell command assigns a meeting policy to a specific user?",o:["Set-CsTeamsMeetingPolicy","New-CsTeamsMeetingPolicy","Grant-CsTeamsMeetingPolicy","Add-CsTeamsMeetingPolicy"],a:2,e:"Grant-CsTeamsMeetingPolicy assigns a policy to a user. New- creates, Set- modifies, Get- retrieves. The Grant-Cs pattern is used for all policy assignments to users."},
+    {q:"What is the purpose of policy packages in Teams?",o:["Bundle network policies for a site","Bundle multiple policies for a specific user persona","Group DLP and retention policies","Configure QoS for device types"],a:1,e:"Policy packages are pre-configured bundles of policies for a persona such as Frontline Worker or Education Student. They simplify bulk policy assignment."},
+    {q:"How long can a deleted M365 group be restored?",o:["7 days","14 days","30 days","60 days"],a:2,e:"Deleted M365 groups can be restored within 30 days. After 30 days the group and all its content including the associated Team is permanently deleted."},
+    {q:"Users from contoso.com should chat 1:1 with internal users but NOT access internal teams. Configure:",o:["Guest access","External access (federation)","Shared channels","B2B direct connect"],a:1,e:"External access or federation allows 1:1 chat and calling with other org users but gives NO access to teams, channels, or files. That is the key distinction from guest access."},
+    {q:"Guest access requires configuration in how many portals?",o:["1 (TAC only)","2 (TAC + Entra ID)","3 (TAC + Entra ID + M365 Admin)","4 portals"],a:2,e:"Guest access requires all 3 enabled: (1) Entra ID External Identities, (2) M365 Admin Center group settings, (3) TAC guest access. Any one off means guests cannot join."},
+    {q:"An external user wants to join a specific channel without being a guest in the whole org. What feature?",o:["Guest access","External access","Shared channels via B2B direct connect","Cross-tenant sync"],a:2,e:"Shared channels let external users participate in a specific channel without being a tenant guest. Requires B2B direct connect enabled in Entra ID cross-tenant access settings."},
+    {q:"To block all external domains EXCEPT microsoft.com, where do you configure this?",o:["Entra ID - External Identities","TAC - Users - External access","Purview - Information Barriers","M365 Admin - Security"],a:1,e:"Domain-level federation control is in TAC - Users - External access. Switch to Allow specific domains and list the allowed domains."},
+    {q:"Removing a guest from one team in your tenant does what?",o:["Removes them from all teams and the tenant","Removes them from that specific team only","Disables their account","Deletes all their messages"],a:1,e:"Removing a guest from a team only removes them from that specific team. Their guest account and other team memberships remain. To remove completely, delete the guest account from Entra ID."},
+    {q:"A company wants to broadcast to 15,000 employees. Which event type?",o:["Teams Meeting","Webinar","Town Hall","Virtual Appointment"],a:2,e:"Town Halls support up to 20,000 attendees for broadcast events with Q and A. Webinars support up to 1,000. Town Halls replaced Live Events."},
+    {q:"Which meeting type requires attendees to register via a form?",o:["Teams Meeting","Webinar","Town Hall","Channel meeting"],a:1,e:"Webinars support attendee registration with custom forms. Town Halls do not have individual attendee registration."},
+    {q:"Organiser has recording disabled. Attendee has it enabled. Can the attendee record?",o:["Yes, attendee policy overrides","No, organiser policy controls the meeting","Yes but only 60 minutes","No, only admins can record"],a:1,e:"Meeting policies are organiser-based for most settings. The organiser policy governs what is allowed in the meeting. This is a common exam trap."},
+    {q:"Auto-Attendants and Call Queues require what kind of account?",o:["User account with Teams Phone license","Resource account with Virtual User license","Service account with Global Admin role","Shared mailbox with Exchange Plan 2"],a:1,e:"Auto-Attendants and Call Queues require a resource account with a Teams Phone Resource Account license which is the Virtual User license and it is free."},
+    {q:"Which Teams Phone model requires the org to manage their own Session Border Controller?",o:["Calling Plan","Operator Connect","Direct Routing","Teams Phone Mobile"],a:2,e:"Direct Routing requires deploying and managing your own SBC. Calling Plan and Operator Connect are managed by Microsoft or a certified carrier respectively."},
+    {q:"Where are channel meeting recordings stored?",o:["Organiser OneDrive","Channel SharePoint document library","Teams itself","Exchange Online"],a:1,e:"Channel meeting recordings go to the channel SharePoint document library. Non-channel meeting recordings go to the organiser OneDrive."},
+    {q:"An admin wants consistent pre-configured meeting settings for a department. Use:",o:["Meeting policies","Meeting templates","Policy packages","Org-wide meeting settings"],a:1,e:"Meeting templates pre-configure meeting settings users select when scheduling. Policies control what users can configure while templates provide a starting configuration."},
+    {q:"An admin wants to be alerted when a new team is created. Configure:",o:["A retention policy","An alert rule in TAC - Notifications","A DLP policy","A Conditional Access policy"],a:1,e:"Alert rules in TAC under Notifications and Alerts can notify admins about team creation, deletion, app errors, or user changes."},
+    {q:"To investigate ONE specific user poor call quality, use:",o:["CQD","Network Planner","Call Analytics in TAC - Users","M365 network connectivity test"],a:2,e:"Call Analytics in TAC - Users - select user - Meetings and Calls tab shows per-user call statistics. CQD is for org-wide trend analysis."},
+    {q:"Org-wide call quality trends over 28 days. Which tool?",o:["Call Analytics","Call Quality Dashboard (CQD)","Teams usage reports","Network Assessment Tool"],a:1,e:"CQD provides org-wide call quality analytics and trends over time. It identifies systemic issues affecting many users."},
+    {q:"A user cannot sign in to Teams. Admin wants quick self-help diagnostics. Where?",o:["TAC - Users - Diagnostics","M365 Admin - Support - Run diagnostics","PowerShell Test-CsTeamsUserPolicy","Purview - Activity Explorer"],a:1,e:"M365 Admin Center - Support - Run diagnostics includes self-help checks for Teams sign-in, meeting creation, calling, and more without manual troubleshooting."},
+    {q:"Teams client shows stale data and behaves unexpectedly. Quickest first step?",o:["Reinstall Teams","Clear the Teams client cache","Reset network adapter","Run Windows Update"],a:1,e:"Clear the Teams client cache at %appdata% Microsoft Teams on Windows. This is the standard first troubleshooting step for unexpected client behaviour."},
+    {q:"Client-side logs in Teams desktop app are collected by pressing:",o:["Ctrl+Alt+Shift+1","F12","Ctrl+Shift+T","Alt+F4"],a:0,e:"Ctrl+Alt+Shift+1 in the Teams desktop app downloads a zip of client logs. Web browser logs use the F12 developer tools."},
+    {q:"Which report shows active users, messages, meetings, and calls per user?",o:["CQD Summary report","Teams usage report","App usage report","Attendance report"],a:1,e:"The Teams usage report in TAC - Analytics and Reports - Usage reports - Teams user activity shows per-user activity metrics including messages, meetings, calls, and active status."},
+    {q:"What is required to use shared channels with an external organisation?",o:["Guest access settings","B2B direct connect cross-tenant access settings","Conditional Access policies","Information Barriers"],a:1,e:"Shared channels require B2B direct connect configured in Entra ID - External Identities - Cross-tenant access settings. Both organisations must configure this."},
+    {q:"Meeting recordings for NON-channel meetings are stored in:",o:["Channel SharePoint library","Organiser OneDrive","Exchange Online mailbox","Teams file storage"],a:1,e:"Non-channel meeting recordings are stored in the meeting organiser OneDrive. Channel meeting recordings go to the channel SharePoint document library."},
+    {q:"A user is in two security groups. Group A (rank 1) has Policy X, Group B (rank 2) has Policy Y. Which policy applies?",o:["Policy Y from Group B","Policy X from Group A","The org-wide default","Both policies merge"],a:1,e:"When a user is in multiple groups with different policies, the group with the lowest rank number wins. Rank 1 is the highest priority group assignment."}
+  ];
+
+  var cur = 0, sel = null, selM = [], score = 0, ans = [];
+
+  function initQuiz() {
+    ans = [];
+    for (var i = 0; i < qs.length; i++) ans.push(null);
+    renderQ();
+  }
+
+  function renderQ() {
+    var c = document.getElementById('qc');
+    if (cur >= qs.length) { renderScore(c); return; }
+    var q = qs[cur];
+
+    var dots = '';
+    for (var i = 0; i < qs.length; i++) {
+      var cl = 'qd';
+      if (i === cur) cl += ' cur';
+      else if (ans[i] === true) cl += ' ok';
+      else if (ans[i] === false) cl += ' bad';
+      dots += '<div class="' + cl + '"></div>';
+    }
+
+    var opts = '';
+    for (var i = 0; i < q.o.length; i++) {
+      var cl = 'opt';
+      var done = ans[cur] !== null;
+      var ca = Array.isArray(q.a) ? q.a : [q.a];
+      if (done) {
+        if (ca.indexOf(i) > -1) cl += ' ok';
+        else if (q.m ? selM.indexOf(i) > -1 : sel === i) cl += ' bad';
+      } else {
+        if (q.m ? selM.indexOf(i) > -1 : sel === i) cl += ' sel';
+      }
+      opts += '<div class="' + cl + '" data-idx="' + i + '"><div class="okey">' + String.fromCharCode(65 + i) + '</div><div class="otext">' + q.o[i] + '</div></div>';
+    }
+
+    var done = ans[cur] !== null;
+    var canSub = q.m ? selM.length > 0 : sel !== null;
+
+    c.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">'
+      + '<div style="font-weight:700;font-size:1.05rem">50 Questions</div>'
+      + '<div style="font-family:monospace;font-size:.75rem;color:#7a8199">Score: ' + score + '/' + cur + '</div>'
+      + '</div>'
+      + '<div class="qdots">' + dots + '</div>'
+      + '<div class="qnum">Q' + (cur + 1) + ' of ' + qs.length + (q.m ? ' &mdash; Select all that apply' : '') + '</div>'
+      + '<div class="qtext">' + q.q + '</div>'
+      + '<div id="opts">' + opts + '</div>'
+      + '<div class="expl' + (done ? ' on' : '') + '">' + q.e + '</div>'
+      + '<div style="margin-top:14px" id="qbtns">'
+      + (!done ? '<button class="qbtn" id="sbtn"' + (canSub ? '' : ' disabled') + '>Submit</button>' : '')
+      + (done ? '<button class="qbtn" id="nbtn">Next</button>' : '')
+      + (cur > 0 ? '<button class="qbtn sec2" id="pbtn">Back</button>' : '')
+      + '</div>';
+
+    var optEls = document.querySelectorAll('.opt');
+    for (var i = 0; i < optEls.length; i++) {
+      (function(el) {
+        el.addEventListener('click', function() {
+          if (ans[cur] !== null) return;
+          var idx = parseInt(el.getAttribute('data-idx'));
+          if (q.m) {
+            var p = selM.indexOf(idx);
+            if (p > -1) selM.splice(p, 1); else selM.push(idx);
+          } else {
+            sel = idx;
+          }
+          renderQ();
+        });
+      })(optEls[i]);
+    }
+
+    var sb = document.getElementById('sbtn');
+    if (sb) sb.addEventListener('click', function() {
+      var ok;
+      if (q.m) {
+        var ca2 = q.a.slice().sort().join(',');
+        var sa = selM.slice().sort().join(',');
+        ok = ca2 === sa;
+      } else {
+        ok = sel === q.a;
+      }
+      ans[cur] = ok;
+      if (ok) score++;
+      renderQ();
+    });
+
+    var nb = document.getElementById('nbtn');
+    if (nb) nb.addEventListener('click', function() { cur++; sel = null; selM = []; renderQ(); });
+
+    var pb = document.getElementById('pbtn');
+    if (pb) pb.addEventListener('click', function() { if (cur > 0) { cur--; sel = null; selM = []; renderQ(); } });
+  }
+
+  function renderScore(c) {
+    var pct = Math.round(score / qs.length * 100);
+    var pass = pct >= 70;
+    c.innerHTML = '<div style="text-align:center;padding:40px 0">'
+      + '<div style="font-size:.9rem;color:#7a8199;margin-bottom:6px">Final Score</div>'
+      + '<div class="sbig ' + (pass ? 'spass' : 'sfail') + '">' + score + '/' + qs.length + '</div>'
+      + '<div style="font-family:monospace;color:#7a8199;margin:4px 0 8px">' + pct + '%</div>'
+      + '<div style="font-size:1rem;font-weight:700;color:' + (pass ? '#38d9a9' : '#f06060') + ';margin-bottom:12px">'
+      + (pass ? 'Exam-ready level!' : 'Keep studying') + '</div>'
+      + '<p style="color:#7a8199;font-size:.85rem;max-width:300px;margin:0 auto 20px">'
+      + (pass ? 'Tracking well for 700+. Do the official Microsoft practice assessment.' : 'Review wrong answers in Content tab and redo the labs.')
+      + '</p>'
+      + '<button class="qbtn" id="rbtn">Restart Quiz</button>'
+      + '</div>';
+    document.getElementById('rbtn').addEventListener('click', function() {
+      cur = 0; sel = null; selM = []; score = 0;
+      for (var i = 0; i < qs.length; i++) ans[i] = null;
+      renderQ();
+    });
+  }
+
+})();
+</script>
+</body>
+</html>
